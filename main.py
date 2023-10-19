@@ -11,9 +11,11 @@ participants = {
 def search_workshop(workshops, Workshop_ID) -> print:
 
     for workshop in workshops:
+        print(workshop)
+        print(len(workshop),"-----",len(workshops))
         if Workshop_ID in workshop['Workshop_ID']:
             return print(f"{Workshop_ID} is there, more detils about:\n Title: {workshop['Title']}\n Seats Available: {workshop['Seats_Available']}")
-        if len(workshops)-1 == workshop:
+        if len(workshop) == len(workshops):
             return print("Workshop is not found")
 
 user_input = input("Please enter workshop you locking for: ")
