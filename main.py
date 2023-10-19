@@ -43,7 +43,7 @@ def list_participants(workshops, participants, Workshop_ID):
             temp.append(participant)
     return temp
 
-
+print(search_workshop(workshops,'W1'))
 print(list_participants(workshops,participants,'W1'))
 print(register_workshop(workshops,participants,'Bader','W1'))
 print(list_participants(workshops,participants,'W1'))
