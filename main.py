@@ -16,7 +16,7 @@ def search_workshop(workshops, Workshop_ID) -> print:
         if Workshop_ID in workshop['Workshop_ID']:
             print(" ------Detils: \n",f"{Workshop_ID} is there, more detils about:\n Title: {workshop['Title']}\n Seats Available: {workshop['Seats_Available']}\n","------")
 
-user_input = input("Please enter workshop you locking for: ")
+user_input = input("Please enter workshop you locking for: W1 ")
 search_workshop(workshops,user_input)
 
 
@@ -33,15 +33,15 @@ def register_workshop(workshops, participantse, participant_name, Workshop_ID):
 
 print("Note: If you want to register with us, fill the form below:")               
 print("-"*4,"Registeration Form","-"*4)
-participants_names = input("Enter your name: ")
-workshops_id = input("Enter workshop name. Note: workshop name like: (W1,W2 etc...): ")
+participants_names = input("Enter your name. Ex: Hazal: ")
+workshops_id = input("Enter workshop name. Note: workshop name. Ex: W2: ")
 participants = register_workshop(workshops,participants,participants_names,workshops_id)
 print(participants,"After registration")
-close = input("If you want to add another workshop enter ( 1 or exit ) to close: ")
+close = input("If you want to add another workshop enter ( 1 or exit ) to close. Ex: 1 : ")
 
 if close == "1":
-    participants_names = input("Enter your name: ")
-    workshops_id = input("Note: workshop name like: (W1,W2 etc...): ")
+    participants_names = input("Enter your name. Ex: Hazal: ")
+    workshops_id = input("Note: workshop name. Ex: W2 : ")
     participants = register_workshop(workshops,participants,participants_names,workshops_id)
     print(participants,"After registration")
 elif close == "exit":
@@ -59,8 +59,8 @@ def cancel_registration(workshops, participantse, participant_name, Workshop_ID)
                         n['Seats_Available'] += 1
                     print("Cancel successflly")
 
-participants_cancel = input("Enter name to cancel the paraticipate: ")
-workshops_cancel = input("Enter the workshop you want to cancel: ")
+participants_cancel = input("Enter name to cancel the paraticipate: Hazal ")
+workshops_cancel = input("Enter the workshop you want to cancel: W2 ")
 cancel_registration(workshops,participants,participants_cancel,workshops_cancel)
 print(participants,"After cancel")
 
@@ -68,7 +68,7 @@ def list_workshops(participantse, participant_name):
     if participant_name in participants:
         print(f"{participant_name} is participate in these workshop: {', '.join(participants[participant_name])}")
 
-list_participate_name_in_workshop = input("Enter the name your search for: ")
+list_participate_name_in_workshop = input("Enter the name your search for: Hazal ")
 list_workshops(participants,list_participate_name_in_workshop)
 
 def list_participants(workshops, participants, Workshop_ID):
@@ -78,5 +78,5 @@ def list_participants(workshops, participants, Workshop_ID):
             if Workshop_ID in workshops_list:
                 print(participant)
 
-workshop_list = input("Enter workshop you want to see who register in: ")
+workshop_list = input("Enter workshop you want to see who register in: W1 ")
 list_participants(workshops,participants,workshop_list)
