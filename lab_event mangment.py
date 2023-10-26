@@ -56,58 +56,59 @@ def list_workshops(participants, participant_name):
 
 
 def list_participants(workshops, participants, Workshop_ID):
-    value = [i for i in participants.items()]
-    print(value)
-
+        for parti_name,workshops in participants.items():
+            if Workshop_ID in workshops:
+                print(f"The participant registered for {Workshop_ID} : {parti_name}")
 
 
 print("-"*22)
 print("-----WELCOME TO OUR PROGRAM-----")
-option = input("Do you want to:\n 1-Search for a Workshop \n 2-Register for a Workshop \n 3-Cancel particepation \n 4-List Workshops for a Participant \n 5-List Participants for a Workshop\n 6-Exit.\n choose a number:")
+while True:
+    option = input("Do you want to:\n 1-Search for a Workshop \n 2-Register for a Workshop \n 3-Cancel particepation \n 4-List Workshops for a Participant \n 5-List Participants for a Workshop\n 6-Exit.\n choose a number:")
+    if option =="1":
+        #**Search for a Workshop**
+        for i in workshops:
+            print(i)
+        WorkshopID = input("Enter the workshop ID: ")
+        print(f"The details of this workshop : {search_workshop(workshops,WorkshopID)} ")
+        print("***Thank you for visiting our program****")
+        
+    elif option =="2":
+        #**Register for a Workshop**
+        print("Register for a Workshop")
+        parti_name = input("Enter your name: ")
+        new_WorkshopID = input("Enter the ID of workshop: ")
+        register_workshop(workshops,participants,parti_name,new_WorkshopID)
+        print(participants)
+        print("***Thank you for visiting our program****")
 
-if option =="1":
-    #**Search for a Workshop**
-    for i in workshops:
-        print(i)
-    WorkshopID = input("Enter the workshop ID: ")
-    print(f"The details of this workshop : {search_workshop(workshops,WorkshopID)} ")
-    print("***Thank you for visiting our program****")
-    
-elif option =="2":
-    #**Register for a Workshop**
-    print("Register for a Workshop")
-    parti_name = input("Enter your name: ")
-    new_WorkshopID = input("Enter the ID of workshop: ")
-    register_workshop(workshops,participants,parti_name,new_WorkshopID)
-    print(participants)
-    print("***Thank you for visiting our program****")
+    elif option =="3":
+        #cancel particepation 
+        print("TO CANCLE YOUR PARTICEPATION.")
+        parti_name = input("Enter your name : ")
+        WorkshopID = input("Enter the workshop ID :")
+        cancel_registration(workshops,participants,parti_name,WorkshopID)
+        print("***Thank you for visiting our program****")
 
-elif option =="3":
-    #cancel particepation 
-    print("TO CANCLE YOUR PARTICEPATION.")
-    parti_name = input("Enter your name : ")
-    WorkshopID = input("Enter the workshop ID :")
-    cancel_registration(workshops,participants,parti_name,WorkshopID)
-    print("***Thank you for visiting our program****")
+    elif option == "4":
+        #List Workshops for a Participant
+        print("List Workshops for a Participant")
+        name_participants = input("Enter your name: ")
+        list_workshops(participants,name_participants)
+        print("***Operartion is Done****")
+        print("***Thank you for visiting our program****")
 
-elif option == "4":
-    #List Workshops for a Participant
-    print("List Workshops for a Participant")
-    name_participants = input("Enter your name: ")
-    list_workshops(participants,name_participants)
-    print("***Thank you for visiting our program****")
+    elif option == "5":
+        #List Participants for a Workshop
+        Workshop_ID = input("Enter the workshop ID:")
+        list_participants(workshops, participants, Workshop_ID)
+        print("***Operartion is Done****")
+        print("***Thank you for visiting our program****")
 
-elif option == "5":
-    #List Participants for a Workshop
-    ID_workshop = input("Enter the workshop ID:")
-    list_workshops(workshops,participants,ID_workshop)
-    print("***Thank you for visiting our program****")
+    elif option == "6":
+        print("Bye, See you next time.")
+        break
 
-elif option == "6":
-    print("Bye, See you next time.")
-
-else:
-    print("Invaild input please choose any number from the above.")
-
-
+    else:
+        print("Invaild input please choose any number from the above.")
 
